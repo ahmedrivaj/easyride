@@ -10,8 +10,20 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Create Driver Page</title>
+        <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
+        <style>
+            html, body, #container {width: 100vw; height: 100vh; margin: 0px;}
+            #container { 
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                flex-direction: column;
+            }
+        </style>
     </head>
     <body>
+        <div id="container">
         <c:if test="${errors != null && errors.size() > 0}">
             <c:forEach var="error" items="${errors}" >
                 <div> Error: ${error}</div>
@@ -24,16 +36,69 @@
             </c:forEach>
 
         </c:if>
-
+                
+                <form class="form-inline my-2 my-lg-0" method="POST" action="/logout">
+                        <button class="btn btn-outline-danger my-2 my-sm-0" type="submit">Logout</button>
+                    </form>
+                
         <form method="POST" action="/admin/registerdriver">
-            <label for="name">Name</label><input type="text" id="name" name="name"/>
-            <label for="email">Email</label><input type="text" id="email" name="email"/>
-            <label for="email">Contact Number</label><input type="text" id="contactNumber" name="contactNumber"/>
-            <label for="email">Vehical Registration Number</label><input type="text" id="vehicalRegistrationNumber" name="vehicalRegistrationNumber"/>
-            <label for="email">License Number</label><input type="text" id="licenseNumber" name="licenseNumber"/>
-            <label for="password">Password</label><input type="password" id="password" name="password"/>
-            <label for="passwordAgain">Enter Password Again for Verification</label><input type="passwordAgain" id="passwordAgain" name="passwordAgain"/>
-            <input type="submit" value="Submit"/>
-        </form>
+                <h4 class="card-title mt-3 text-center">Register new Driver</h4>
+
+                <div class="form-group input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"> <i class="fa fa-user"></i> </span>
+                    </div>
+                    <input name="name" class="form-control" placeholder="Full name" type="text">
+                </div> <!-- form-group// -->
+                <div class="form-group input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
+                    </div>
+                    <input name="email" class="form-control" placeholder="Email address" type="email">
+                    
+                </div> <!-- form-group// -->
+                <div class="form-group input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"> <i class="fa fa-phone"></i> </span>
+                    </div>
+                    <input name="contactNumber" class="form-control" placeholder="Contact Number" type="text">
+                    
+                </div> <!-- form-group// -->
+                
+                <div class="form-group input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"> <i class="fas fa-car"></i> </span>
+                    </div>
+                    <input name="vehicalRegistrationNumber" class="form-control" placeholder="Vehicle Registration Number" type="text">
+                    
+                </div> <!-- form-group// -->
+                
+                <div class="form-group input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"> <i class="fas fa-address-card"></i> </span>
+                    </div>
+                    <input name="licenseNumber" class="form-control" placeholder="License Number" type="text">
+                </div> <!-- form-group// -->
+
+                <div class="form-group input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
+                    </div>
+                    <input name="password" class="form-control" placeholder="Password" type="password">
+                </div> <!-- form-group// -->
+                <div class="form-group input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
+                    </div>
+                    <input name="passwordAgain" class="form-control" placeholder="Repeat password" type="password">
+                </div> <!-- form-group// -->                                      
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary btn-block"> Create Account  </button>
+                </div> <!-- form-group// -->      
+                <p class="text-center">Have an account? <a href="/public/login">Log In</a> </p>                                                                 
+            </form>
+
+        
+        </div>
     </body>
 </html>
