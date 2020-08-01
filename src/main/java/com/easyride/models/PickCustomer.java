@@ -17,7 +17,7 @@ import java.sql.SQLException;
  */
 public class PickCustomer {
     
-    public static Driver fromResultSet(ResultSet set) throws SQLException {
+    public static PickCustomer fromResultSet(ResultSet set) throws SQLException {
         PickCustomer pickcustomer = new PickCustomer();
         pickcustomer.setId(set.getInt("id"));
         pickcustomer.setUserId(set.getInt("userId"));
