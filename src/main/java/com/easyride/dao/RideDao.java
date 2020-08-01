@@ -24,18 +24,17 @@ public class RideDao extends BaseDao {
         try {
             Connection con = getConnection();
             // Only one row will be returned because there is a unique constraint on email.
-            PreparedStatement statement = con.prepareStatement("INSERT INTO rides(userId, driverId, status, pickupLocationLongitude, pickupLocationLatitude, destinationLongitude, destinationLatitude, fare, requestedTimestamp, endTimestamp, distance) VALUES(?  ,?  ,?  ,?  ,?  ,?  ,?  ,?  ,?  ,?, ?)");
+            PreparedStatement statement = con.prepareStatement("INSERT INTO rides(userId, status, pickupLocationLongitude, pickupLocationLatitude, destinationLongitude, destinationLatitude, fare, requestedTimestamp, endTimestamp, distance) VALUES(?  ,?  ,?  ,?  ,?  ,?  ,?  ,?  ,?, ?)");
             statement.setInt(1, ride.getUserId());
-            statement.setInt(2, ride.getDriverId());
-            statement.setString(3, ride.getStatus().toString());
-            statement.setDouble(4, ride.getPickupLocationLongitude());
-            statement.setDouble(5, ride.getPickupLocationLatitude());
-            statement.setDouble(6, ride.getDestinationLongitude());
-            statement.setDouble(7, ride.getDestinationLatitude());
-            statement.setDouble(8, ride.getFare());
-            statement.setTimestamp(9, Timestamp.from(Instant.now()));
-            statement.setTimestamp(10, ride.getEndTimestamp());
-            statement.setDouble(11, ride.getDistance());
+            statement.setString(2, ride.getStatus().toString());
+            statement.setDouble(3, ride.getPickupLocationLongitude());
+            statement.setDouble(4, ride.getPickupLocationLatitude());
+            statement.setDouble(5, ride.getDestinationLongitude());
+            statement.setDouble(6, ride.getDestinationLatitude());
+            statement.setDouble(7, ride.getFare());
+            statement.setTimestamp(8, Timestamp.from(Instant.now()));
+            statement.setTimestamp(9, ride.getEndTimestamp());
+            statement.setDouble(10, ride.getDistance());
             statement.execute();
             return true;
         } catch (SQLException ex) {
