@@ -17,20 +17,19 @@ import java.sql.SQLException;
  */
 public class PickCustomer {
     
+    private int driverId;
+    
     public static PickCustomer fromResultSet(ResultSet set) throws SQLException {
         PickCustomer pickcustomer = new PickCustomer();
-        pickcustomer.setId(set.getInt("id"));
-        pickcustomer.setUserId(set.getInt("userId"));
         pickcustomer.setDriverId(set.getInt("driverId"));
-        pickcustomer.setStatus(Ride.RideStatus.rideStatusFromString(set.getString("status")));
-        pickcustomer.setPickupLocationLongitude(set.getDouble("pickupLocationLongitude"));
-        pickcustomer.setPickupLocationLatitude(set.getDouble("pickupLocationLatitiude"));
-        pickcustomer.setDestinationLongitude(set.getDouble("destinationLongitude"));
-        pickcustomer.setDestinationLatitude(set.getDouble("destinationLatitude"));
-        pickcustomer.setFare(set.getDouble("fare"));
-        pickcustomer.setRequestedTimestamp(set.getTimestamp("requestedTimestamp"));
-        pickcustomer.setEndTimestamp(set.getTimestamp("endTimestamp"));
-        pickcustomer.setDistance(set.getDouble("distance"));
         return pickcustomer;
+    }
+    
+    public int getDriverId() {
+        return driverId;
+    }
+
+    public void setDriverId(int driverId) {
+        this.driverId = driverId;
     }
 }

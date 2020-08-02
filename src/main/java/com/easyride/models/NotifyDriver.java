@@ -16,21 +16,40 @@ import java.sql.SQLException;
  */
 public class NotifyDriver {
     
+    private int userId;
+    private String name;
+    private String contactNumber;
+    
     public static NotifyDriver fromResultSet(ResultSet set) throws SQLException {
         NotifyDriver notifydriver = new NotifyDriver();
-        notifydriver.setId(set.getInt("id"));
         notifydriver.setUserId(set.getInt("userId"));
-        notifydriver.setDriverId(set.getInt("driverId"));
-        notifydriver.setStatus(Ride.RideStatus.rideStatusFromString(set.getString("status")));
-        notifydriver.setPickupLocationLongitude(set.getDouble("pickupLocationLongitude"));
-        notifydriver.setPickupLocationLatitude(set.getDouble("pickupLocationLatitiude"));
-        notifydriver.setDestinationLongitude(set.getDouble("destinationLongitude"));
-        notifydriver.setDestinationLatitude(set.getDouble("destinationLatitude"));
-        notifydriver.setFare(set.getDouble("fare"));
-        notifydriver.setRequestedTimestamp(set.getTimestamp("requestedTimestamp"));
-        notifydriver.setEndTimestamp(set.getTimestamp("endTimestamp"));
-        notifydriver.setDistance(set.getDouble("distance"));
+        notifydriver.setName(set.getString("name"));
+        notifydriver.setUserId(set.getInt("contactNumber"));
         return notifydriver;
+    }
+    
+    public int getUserId() {
+        return userId;
+    }
+
+    public void setUserId(int userId) {
+        this.userId = userId;
+    }
+    
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+    
+    public String getContactNumber() {
+        return contactNumber;
+    }
+
+    public void setContactNumber(String contactNumber) {
+        this.contactNumber = contactNumber;
     }
     
 }
