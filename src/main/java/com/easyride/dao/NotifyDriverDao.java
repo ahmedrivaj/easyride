@@ -22,7 +22,7 @@ public class NotifyDriverDao {
     public static Ride getCallOfCustomer(User driver) {
         try {
             Connection con = getConnection();
-            PreparedStatement statement = con.prepareStatement("SELECT id, userId, driverId, status, pickupLocationLongitude, pickupLocationLatitude, destinationLongitude, destinationLatitude, fare, requestedTimestamp, endTimestamp, distance from rides where driverId = 3 AND status='Waiting'");
+            PreparedStatement statement = con.prepareStatement("SELECT rides.userid, users.name from RIDES left join USERS on rides.userid = users.id WHERE rides.status = 'Waiting' FETCH FIRST 1 ROW ONLY;");
             statement.setInt(1, driver.getId());
             ResultSet set = statement.executeQuery();
 
