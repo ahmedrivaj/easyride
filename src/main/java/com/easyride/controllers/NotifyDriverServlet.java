@@ -20,7 +20,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Ahmed Rivaj
  */
-@WebServlet(name = "SetDriverStatusServlet", urlPatterns = {"/driver/notifydriver"})
+@WebServlet(name = "NotifyDriverServlet", urlPatterns = {"/driver/notifydriver"})
 public class NotifyDriverServlet extends BaseServlet{
     
     /**
@@ -49,16 +49,8 @@ public class NotifyDriverServlet extends BaseServlet{
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String newStatus = request.getParameter("driverStatus");
-        User.DriverStatus status = User.DriverStatus.driverStatusFromString(newStatus);
-        EasyCabSession session = getSession(request);
-        User driver = session.getUser();
-        if (status != null){
-            driver.setDriverStatus(status);
-            UserDao.setDriverStatus(driver, status);
-            
-        }
-        response.sendRedirect("/driver/dashboard.jsp");
+        
+        response.sendRedirect("/driver/notify-driver.jsp");
     }
     
 }
