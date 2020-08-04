@@ -13,5 +13,6 @@
     </head>
     <body>
         <h1>Notify Drivers</h1>
+        ${ball}
     </body>
 </html>

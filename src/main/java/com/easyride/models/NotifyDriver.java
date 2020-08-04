@@ -20,13 +20,13 @@ public class NotifyDriver {
     private String name;
     private String contactNumber;
     
-    public static NotifyDriver fromResultSet(ResultSet set) throws SQLException {
-        NotifyDriver notifydriver = new NotifyDriver();
-        notifydriver.setUserId(set.getInt("userId"));
-        notifydriver.setName(set.getString("name"));
-        notifydriver.setUserId(set.getInt("contactNumber"));
-        return notifydriver;
-    }
+//    public static NotifyDriver fromResultSet(ResultSet set) throws SQLException {
+//        NotifyDriver notifydriver = new NotifyDriver();
+//        notifydriver.setUserId(set.getInt("userId"));
+//        notifydriver.setName(set.getString("name"));
+//        notifydriver.setUserId(set.getInt("contactNumber"));
+//        return notifydriver;
+//    }
     
     public int getUserId() {
         return userId;

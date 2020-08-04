@@ -5,11 +5,13 @@
  */
 package com.easyride.controllers;
 
+import com.easyride.dao.NotifyDriverDao;
 import com.easyride.dao.UserDao;
-import com.easyride.models.User;
+import com.easyride.models.NotifyDriver;
 import com.easyride.utils.EasyCabSession;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -23,6 +25,8 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet(name = "NotifyDriverServlet", urlPatterns = {"/driver/notifydriver"})
 public class NotifyDriverServlet extends BaseServlet{
     
+    private ArrayList<NotifyDriver> notifydriversList = null;
+    
     /**
      * Handles the HTTP <code>POST</code> method.
      *
@@ -34,23 +38,52 @@ public class NotifyDriverServlet extends BaseServlet{
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String newStatus = request.getParameter("driverStatus");
-        User.DriverStatus status = User.DriverStatus.driverStatusFromString(newStatus);
-        EasyCabSession session = getSession(request);
-        User driver = session.getUser();
-        if (status != null){
-            driver.setDriverStatus(status);
-            UserDao.setDriverStatus(driver, status);
-            
-        }
-        response.sendRedirect("/driver/dashboard.jsp");
+//        String newStatus = request.getParameter("driverStatus");
+//        User.DriverStatus status = User.DriverStatus.driverStatusFromString(newStatus);
+//        EasyCabSession session = getSession(request);
+//        User driver = session.getUser();
+//        if (status != null){
+//            driver.setDriverStatus(status);
+//            UserDao.setDriverStatus(driver, status);
+//            
+//        }
+//        response.sendRedirect("/driver/dashboard.jsp");
     }
     
-    @Override
+  
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        response.sendRedirect("/driver/notify-driver.jsp");
+        
+//        System.out.println("test");
+//        System.out.println(notify.getCallOfCustomer());
+        try{
+//            NotifyDriverDao notify = new NotifyDriverDao();
+//            notifydriversList = notify.getCallOfCustomer();
+            Integer ball = UserDao.getAvailableDriverCount();
+            notifydriversList = NotifyDriverDao.getCallOfCustomer();
+            PrintWriter out = response.getWriter();
+            out.println(notifydriversList);
+            out.println("test");
+////        
+////        System.out.println(notifydriversList);
+//        
+        for (NotifyDriver noti: notifydriversList){
+            out.print(noti.getUserId());
+            out.print(noti.getName());
+           
+        }
+        
+        request.setAttribute("ball",ball);
+//        getServletContext().getRequestDispatcher("/driver/notify-driver.jsp").forward(request, response);
+//        response.sendRedirect("/driver/notify-driver.jsp");
+            
+        }catch(Exception e){
+                
+            }
+        
+//
+//        
     }
     
 }
