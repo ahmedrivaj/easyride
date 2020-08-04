@@ -62,20 +62,23 @@ public class NotifyDriverServlet extends BaseServlet{
 //            notifydriversList = notify.getCallOfCustomer();
             Integer ball = UserDao.getAvailableDriverCount();
             notifydriversList = NotifyDriverDao.getCallOfCustomer();
-            PrintWriter out = response.getWriter();
-            out.println(notifydriversList);
-            out.println("test");
+//            PrintWriter out = response.getWriter();
+//            out.println(notifydriversList);
+//            out.println("test");
 ////        
 ////        System.out.println(notifydriversList);
-//        
+        String UserName = null;  
+        Integer UserId = null;
         for (NotifyDriver noti: notifydriversList){
-            out.print(noti.getUserId());
-            out.print(noti.getName());
-           
+            UserId = noti.getUserId();
+            UserName = noti.getName();
         }
         
+        request.setAttribute("UserId", UserId);
+        request.setAttribute("UserName", UserName);
+        request.setAttribute("mouse", notifydriversList);
         request.setAttribute("ball",ball);
-//        getServletContext().getRequestDispatcher("/driver/notify-driver.jsp").forward(request, response);
+        getServletContext().getRequestDispatcher("/driver/notify-driver.jsp").forward(request, response);
 //        response.sendRedirect("/driver/notify-driver.jsp");
             
         }catch(Exception e){
