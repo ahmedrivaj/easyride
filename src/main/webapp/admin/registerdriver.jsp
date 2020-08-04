@@ -87,8 +87,6 @@
         <div class="sidebar">
   <a href="./dashboard.jsp"><i class="fa fa-fw fa-home"></i> Home</a>
   <a href="./registerdriver.jsp"><i class="fa fa-fw fa-wrench"></i> Register Driver</a>
-  <a href="#clients"><i class="fa fa-fw fa-user"></i> Clients</a>
-  <a href="#contact"><i class="fa fa-fw fa-envelope"></i> Contact</a>
 </div>
         <div class="main">
             
@@ -186,7 +184,7 @@
                 <div class="form-group">
                     <button type="submit" class="btn btn-primary btn-block"> Create Account  </button>
                 </div> <!-- form-group// -->      
-                <p class="text-center">Have an account? <a href="/public/login">Log In</a> </p>                                                                 
+                <p class="text-center">Have an account? <a href="/public/login.jsp">Log In</a> </p>                                                                 
             </form>
     
                 

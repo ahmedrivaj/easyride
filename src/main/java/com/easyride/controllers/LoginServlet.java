@@ -69,7 +69,7 @@ public class LoginServlet extends BaseServlet {
             } else if (user.getType() == User.UserType.Customer) {
                 ((HttpServletResponse) response).sendRedirect("/customer/request-a-pickup.jsp");
             } else {
-                ((HttpServletResponse) response).sendRedirect("/index.jsp");
+                ((HttpServletResponse) response).sendRedirect("/admin/dashboard.jsp");
             }
         } else {
 

@@ -87,8 +87,6 @@
         <div class="sidebar">
   <a href=""><i class="fa fa-fw fa-home"></i> Home</a>
   <a href="./registerdriver.jsp"><i class="fa fa-fw fa-wrench"></i> Register Driver</a>
-  <a href="#clients"><i class="fa fa-fw fa-user"></i> Clients</a>
-  <a href="#contact"><i class="fa fa-fw fa-envelope"></i> Contact</a>
 </div>
         <div class="main">
             
